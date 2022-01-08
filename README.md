@@ -1,5 +1,12 @@
 # Docker For [Phorge](https://we.phorge.it/)
 
+### Create the data directories
+
+```
+mkdir -p data/web data/db data/ssh data/web
+sudo chown 82:82 data/web
+```
+
 ![Docker Image Size (latest)](https://img.shields.io/docker/image-size/zeigren/phorge/latest)
 ![Docker Pulls](https://img.shields.io/docker/pulls/zeigren/phorge)
 

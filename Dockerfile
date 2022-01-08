@@ -1,15 +1,5 @@
 FROM php:7.4-fpm-alpine
 
-ARG DATE
-ARG VERSION
-
-LABEL org.opencontainers.image.created=$DATE \
-    org.opencontainers.image.authors="Zeigren" \
-    org.opencontainers.image.url="https://github.com/Zeigren/phorge_docker" \
-    org.opencontainers.image.source="https://github.com/Zeigren/phorge_docker" \
-    org.opencontainers.image.version=$VERSION \
-    org.opencontainers.image.title="zeigren/phorge"
-
 RUN apk update \
 	&& apk add --no-cache bash openssh-server openssh-keygen git \
 	git-daemon subversion mercurial freetype libpng libjpeg-turbo libzip \
