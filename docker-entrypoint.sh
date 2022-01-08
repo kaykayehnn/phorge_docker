@@ -151,6 +151,8 @@ fi
 # TODO: add docs for this in the README or the example docker-compose files
 if [ "${PH_WEBSOCKET_ENABLE}" = "true" ]
 then
+    cd ${ROOT}/phorge/support/aphlict/server
+    sudo -n -u www-data npm install ws
     sudo -n -u www-data ${CONFIG_BIN} set --stdin notification.servers < /usr/src/docker_ph/notification_servers.json
     APHLICT_CONFIG_DIR=/var/www/html/phorge/conf/aphlict/aphlict.default.json
     sudo -n -u phuser ${ROOT}/phorge/bin/aphlict status --config "$APHLICT_CONFIG_DIR" || sudo -n -u phuser ${ROOT}/phorge/bin/aphlict start --config "$APHLICT_CONFIG_DIR"
