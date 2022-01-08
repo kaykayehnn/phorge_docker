@@ -148,6 +148,14 @@ then
     sudo -n -u www-data ${CONFIG_BIN} set --stdin cluster.mailers < /usr/src/docker_ph/mailers.json
 fi
 
+# TODO: add docs for this in the README or the example docker-compose files
+if [ "${PH_WEBSOCKET_ENABLE}" = "true" ]
+then
+    sudo -n -u www-data ${CONFIG_BIN} set --stdin notification.servers < /usr/src/docker_ph/notification_servers.json
+    APHLICT_CONFIG_DIR=/var/www/html/phorge/conf/aphlict/aphlict.default.json
+    sudo -n -u phuser ${ROOT}/phorge/bin/aphlict status --config "$APHLICT_CONFIG_DIR" || sudo -n -u phuser ${ROOT}/phorge/bin/aphlict start --config "$APHLICT_CONFIG_DIR"
+fi
+
 # set permissions for ssh hook
 chown root /usr/libexec/phorge_ssh_hook.sh
 chmod 755 /usr/libexec/phorge_ssh_hook.sh
