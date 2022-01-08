@@ -15,7 +15,7 @@ services:
       - gateway
     volumes:
       - ./data/web:/var/www/html
-      - ./config/phorge_nginx.conf:/etc/nginx/templates/nginx.conf.template
+      - ./phorge_nginx.conf:/etc/nginx/templates/nginx.conf.template
       # UNCOMMENT IF USING NGINX FOR SSL TERMINATION
       # - ./config/yourdomain.test.crt:/etc/nginx/certs/yourdomain.test.crt
       # - ./config/yourdomain.test.key:/etc/nginx/certs/yourdomain.test.key
